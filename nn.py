@@ -16,10 +16,10 @@ class NN(nn.Module):
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
         return x
-        
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-input_size = 784
+input_size = 764 
 num_classes = 10
 learning_rate = 0.001
 batch_size = 64
@@ -63,6 +63,7 @@ def check_accuracy(loader, model):
         for x, y in loader:
             x = x.to(device=device)
             y = y.to(device=device)
+            
             x = x.reshape(x.shape[0], -1)
 
             scores = model(x)
